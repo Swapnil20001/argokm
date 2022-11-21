@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sync-fail
+  annotations:
+    argocd.argoproj.io/hook: SyncFail
+spec:
+  template:
+    spec:
+      containers:
+      - name: sleep
+        image: alpine:latest
+        command: ["sleep", "10"]
+      restartPolicy: Never
+
